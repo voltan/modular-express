@@ -17,19 +17,23 @@ module.exports = {
      * Load all of modules
      * @param app
      */
-    load: function (app) {
-        fs.readdir('./modules', { withFileTypes: true }, (err, entries) => {
-            if (!err) {
-                entries.forEach(entry => {
-                    if (entry.isDirectory()) {
-                        let config = require('../modules/' + entry.name + '/config/config.json')
-                        let router = require('../modules/' + entry.name + '/routes/' + config.route.name)
-                        app.use(config.route.prefix, router)
-                    }
-                })
-            } else {
-                console.log(err)
-            }
-        })
+    load: function (app, systemConfig) {
+        if (systemConfig.module.load) {
+            fs.readdir('./modules', { withFileTypes: true }, (err, entries) => {
+                if (!err) {
+                    entries.forEach(entry => {
+                        if (entry.isDirectory()) {
+                            let config = require('../modules/' + entry.name + '/config/config.json')
+                            let router = require('../modules/' + entry.name + '/routes/' + config.route.name)
+                            app.use(config.route.prefix, router)
+                        }
+                    })
+                } else {
+                    console.log(err)
+                }
+            })
+        } else {
+            console.log('Modules are disable and just system controllers available !')
+        }
     }
 }

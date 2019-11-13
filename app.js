@@ -12,11 +12,12 @@
 let express = require('express')
 let cookieParser = require('cookie-parser')
 let logger = require('morgan')
+let systemConfig = require('./config/config.json')
 
-// Set service path
+// Set service
 let moduleService = require('./services/ModuleService')
 
-// Set route path
+// Set route
 let indexRouter = require('./routes/IndexRouter')
 
 // Set express
@@ -32,6 +33,6 @@ app.use(cookieParser())
 app.use('/', indexRouter)
 
 // Load all modules by service
-moduleService.load(app)
+moduleService.load(app, systemConfig)
 
 module.exports = app
