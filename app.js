@@ -1,5 +1,5 @@
 /**
- * Modular express (https://github.com/voltan/pi-engine-nodejs)
+ * ModuleBase expressJs for PiEngine
  *
  * @link            https://github.com/voltan/pi-engine-nodejs Modular Approach for expressJs
  * @copyright       Copyright (c) Modular express since 2019
@@ -9,27 +9,29 @@
 /**
  * @author Hossein Azizabadi <azizabadi@faragostaresh.com>
  */
-let express = require('express');
-let path = require('path');
-let cookieParser = require('cookie-parser');
-let logger = require('morgan');
+let express = require('express')
+let cookieParser = require('cookie-parser')
+let logger = require('morgan')
 
-// Load route
-let indexRouter = require('./routes/index');
-let newsRouter = require('./routes/news');
-let userRouter = require('./routes/user');
+// Set service path
+let moduleService = require('./services/ModuleService')
+
+// Set route path
+let indexRouter = require('./routes/IndexRouter')
 
 // Set express
-let app = express();
+let app = express()
 
 // Set all middleware
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(logger('dev'))
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
+app.use(cookieParser())
 
-app.use('/', indexRouter);
-app.use('/news', newsRouter);
-app.use('/user', userRouter);
+// Load route
+app.use('/', indexRouter)
 
-module.exports = app;
+// Load all modules by service
+moduleService.load(app)
+
+module.exports = app

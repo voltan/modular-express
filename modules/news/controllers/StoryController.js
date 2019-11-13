@@ -1,5 +1,5 @@
 /**
- * Modular express (https://github.com/voltan/pi-engine-nodejs)
+ * ModuleBase expressJs for PiEngine
  *
  * @link            https://github.com/voltan/pi-engine-nodejs Modular Approach for expressJs
  * @copyright       Copyright (c) Modular express since 2019
@@ -10,14 +10,13 @@
  * @author Hossein Azizabadi <azizabadi@faragostaresh.com>
  */
 
-let newsService = require('../services/news')
+let newsService = require('../services/StoryService')
 
-exports.story = async function (req, res, next) {
-
-  let result = await newsService.updateHits(req.params.id)
-  res.json(result)
+exports.index = async function (req, res, next) {
+    let result = await newsService.updateHits(req.params.id)
+    res.json(result)
 }
 
 exports.else = async function (req, res, next) {
-  res.json({ result: false, data: {}, error: { code: 1, message: 'No action set for use system module !' } })
+    res.json({ result: false, data: {}, error: { code: 1, message: 'No action set for use system module !' } })
 }

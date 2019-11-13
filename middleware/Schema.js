@@ -1,5 +1,5 @@
 /**
- * Modular express (https://github.com/voltan/pi-engine-nodejs)
+ * ModuleBase expressJs for PiEngine
  *
  * @link            https://github.com/voltan/pi-engine-nodejs Modular Approach for expressJs
  * @copyright       Copyright (c) Modular express since 2019
@@ -10,7 +10,7 @@
  * @author Hossein Azizabadi <azizabadi@faragostaresh.com>
  */
 
-let paramsList = require('../config/params')
+let paramsList = require('../config/Params')
 
 /**
  * Middleware for validation inputs
@@ -22,10 +22,17 @@ let paramsList = require('../config/params')
  * @returns {*|Promise<any>}
  */
 module.exports = (controller, action, req, res, next) => {
-  let validate = paramsList[controller][action].validate(req.params)
-  if (validate.error) {
-    return res.json({ result: false, data: {}, error: { message: 'validate error', detail: validate.error.details } })
-  } else {
-    next(req, res)
-  }
+    let validate = paramsList[controller][action].validate(req.params)
+    if (validate.error) {
+        return res.json({
+            result: false,
+            data: {},
+            error: {
+                message: 'validate error',
+                detail: validate.error.details
+            }
+        })
+    } else {
+        next(req, res)
+    }
 }
