@@ -11,13 +11,10 @@
  */
 exports.updateHits = async function (id) {
     // ToDo : story hits update
-
     try {
-        let result = { result: true, data: { message: 'story hits update !', id: id }, error: {} }
-        return result
+        return { result: true, data: { message: 'story hits update !', id: id }, error: {} }
     } catch (e) {
         // Log Errors
         throw Error('Error while Paginating Users')
     }
-
 }
