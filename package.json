@@ -1,0 +1,29 @@
+{
+  "name": "Pi Engine NodeJS API",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "author": {
+    "name": "Hossein Azizabadi",
+    "email": "hossein.azizabadi@gmail.com",
+    "url": "https://github.com/voltan"
+  },
+  "homepage": "https://github.com/voltan/pi-engine-nodejs",
+  "keywords": [
+    "webService",
+    "PiEngine"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/voltan/pi-engine-nodejs.git"
+  },
+  "dependencies": {
+    "@hapi/joi": "^16.1.7",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "morgan": "~1.9.1"
+  }
+}
