@@ -9,12 +9,7 @@
 /**
  * @author Hossein Azizabadi <azizabadi@faragostaresh.com>
  */
-const express = require('express')
-const router = express.Router()
-const indexController = require('../controllers/IndexController')
 
-router.get('/', function (req, res, next) {
-    indexController.index(req, res)
-})
-
-module.exports = router
+module.exports = (db) => {
+    return db
+}

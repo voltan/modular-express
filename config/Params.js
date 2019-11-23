@@ -10,9 +10,9 @@
  * @author Hossein Azizabadi <azizabadi@faragostaresh.com>
  */
 
-let Joi = require('@hapi/joi')
+const Joi = require('@hapi/joi')
 
-let params = {
+const params = {
     news: {
         story: Joi.object({
             id: Joi.number()

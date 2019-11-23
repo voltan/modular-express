@@ -10,10 +10,10 @@
  * @author Hossein Azizabadi <azizabadi@faragostaresh.com>
  */
 
-let newsService = require('../services/StoryService')
+const newsService = require('../services/StoryService')
 
 exports.index = async function (req, res, next) {
-    let result = await newsService.updateHits(req.params.id)
+    const result = await newsService.updateHits(req.params.id)
     res.json(result)
 }
 

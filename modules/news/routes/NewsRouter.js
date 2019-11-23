@@ -9,10 +9,10 @@
 /**
  * @author Hossein Azizabadi <azizabadi@faragostaresh.com>
  */
-let express = require('express')
-let router = express.Router()
-let schemaMiddleware = require('../../../middleware/Schema')
-let storyController = require('../controllers/StoryController')
+const express = require('express')
+const router = express.Router()
+const schemaMiddleware = require('../../../middleware/Schema')
+const storyController = require('../controllers/StoryController')
 
 // Set story route
 router.get('/story/:id', function (req, res, next) {

@@ -9,19 +9,22 @@
 /**
  * @author Hossein Azizabadi <azizabadi@faragostaresh.com>
  */
-let express = require('express')
-let cookieParser = require('cookie-parser')
-let logger = require('morgan')
-let systemConfig = require('./config/config.json')
+const express = require('express')
+const cookieParser = require('cookie-parser')
+const logger = require('morgan')
+const systemConfig = require('./config/config.json')
 
 // Set service
-let moduleService = require('./services/ModuleService')
+const moduleService = require('./services/ModuleService')
+
+// Set database
+global.db = require('./models/index')
 
 // Set route
-let indexRouter = require('./routes/IndexRouter')
+const indexRouter = require('./routes/IndexRouter')
 
 // Set express
-let app = express()
+const app = express()
 
 // Set all middleware
 app.use(logger('dev'))

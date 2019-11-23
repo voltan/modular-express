@@ -10,7 +10,7 @@
  * @author Hossein Azizabadi <azizabadi@faragostaresh.com>
  */
 
-let paramsList = require('../config/Params')
+const paramsList = require('../config/Params')
 
 /**
  * Middleware for validation inputs
