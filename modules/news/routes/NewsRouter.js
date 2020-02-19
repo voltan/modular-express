@@ -16,7 +16,7 @@ const storyController = require('../controllers/StoryController')
 
 // Set story route
 router.get('/story/:id', function (req, res, next) {
-    schemaMiddleware('news', 'story', req, res, (req, res) => {
+    schemaMiddleware('news', 'story', 'index', 'get' ,req, res, (req, res) => {
         storyController.index(req, res)
     })
 })
