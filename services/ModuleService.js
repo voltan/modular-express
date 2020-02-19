@@ -16,6 +16,7 @@ module.exports = {
     /**
      * Load all of modules
      * @param app
+     * @param systemConfig
      */
     load: function (app, systemConfig) {
         if (systemConfig.module.load) {

@@ -12,16 +12,16 @@
 const express = require('express')
 const router = express.Router()
 const schemaMiddleware = require('../../../middleware/Schema')
-const storyController = require('../controllers/StoryController')
+const logController = require('../controllers/LogController')
 
 // Set story route
-router.get('/story/:id', function (req, res, next) {
-    schemaMiddleware('news', 'story', 'index', 'get' ,req, res, (req, res) => {
-        storyController.index(req, res)
+router.post('/log', function (req, res, next) {
+    schemaMiddleware('monitoring', 'log', 'index', 'post', req, res, (req, res) => {
+        logController.index(req, res)
     })
 })
 
 // Set no action
-router.get('*', storyController.else)
+router.get('*', logController.else)
 
 module.exports = router

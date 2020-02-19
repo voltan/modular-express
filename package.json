@@ -1,5 +1,5 @@
 {
-  "name": "Pi Engine NodeJS API",
+  "name": "ddddd",
   "version": "0.0.1",
   "scripts": {
     "start": "node ./bin/www"
@@ -26,7 +26,7 @@
     "express": "~4.16.1",
     "morgan": "~1.9.1",
     "mysql2": "^2.0.0",
-    "sequelize": "^5.21.2",
+    "sequelize": "^5.21.3",
     "sequelize-cli": "^5.5.1",
     "sqlite3": "^4.1.0"
   }

@@ -14,15 +14,27 @@ const paramsList = require('../config/Params')
 
 /**
  * Middleware for validation inputs
+ * @param modules
  * @param controller
  * @param action
+ * @param method
  * @param req
  * @param res
  * @param next
  * @returns {*|Promise<any>}
  */
-module.exports = (controller, action, req, res, next) => {
-    let validate = paramsList[controller][action].validate(req.params)
+module.exports = (modules, controller, action, method, req, res, next) => {
+    let validate;
+    switch (method) {
+        case 'get':
+            validate = paramsList[modules][controller][action].validate(req.params)
+            break;
+
+        case 'post':
+            validate = paramsList[modules][controller][action].validate(req.body)
+            break;
+    }
+
     if (validate.error) {
         return res.json({
             result: false,
