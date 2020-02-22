@@ -6,7 +6,7 @@ CREATE TABLE `monitoring_log`
   `action`          VARCHAR(255)     NOT NULL DEFAULT '',
   `request_params`  MEDIUMINT        NOT NULL,
   `request_result`  MEDIUMINT        NOT NULL,
-  `createdAt`       datetime         NOT NULL,
-  `updatedAt`       datetime         NOT NULL,
+  `created_at`      datetime         NOT NULL,
+  `updated_at`      datetime         NOT NULL,
   PRIMARY KEY (`id`)
 );

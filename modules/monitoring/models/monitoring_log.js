@@ -32,8 +32,10 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.TEXT,
             allowNull: true,
             field: 'request_result'
-        }
+        },
     }, {
+        createdAt: 'created_at',
+        updatedAt: 'updated_at',
         tableName: 'monitoring_log'
     })
 }
