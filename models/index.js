@@ -27,11 +27,29 @@ let sequelize = new Sequelize(
     systemConfig.database
 )
 
+// Set root models
 fs.readdirSync(__dirname).filter(file => {
     return (file.indexOf('.') !== 0) && (file !== 'relations.js')&& (file !== 'index.js') && (file !== basename) && (file.slice(-3) === '.js')
 }).forEach(file => {
     const model = sequelize.import(path.join(__dirname, file))
     db[model.name] = model
+})
+
+// Set modules models
+fs.readdir('./modules', { withFileTypes: true }, (err, entries) => {
+    entries.forEach(entry => {
+        if (entry.isDirectory()) {
+            let modelPath = path.join(__dirname, '../') + '/modules/' + entry.name + '/models';
+            if (fs.existsSync(modelPath)) {
+                fs.readdirSync(modelPath).filter(file => {
+                    return (file.indexOf('.') !== 0) && (file !== 'relations.js')&& (file !== 'index.js') && (file !== basename) && (file.slice(-3) === '.js')
+                }).forEach(file => {
+                    const model = sequelize.import(path.join(modelPath, file))
+                    db[model.name] = model
+                })
+            }
+        }
+    })
 })
 
 Object.keys(db).forEach(function (modelName) {
