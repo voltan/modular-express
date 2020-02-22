@@ -1,9 +1,9 @@
 {
     "database": {
         "username": "root",
-        "password": "Cabin@110",
+        "password": "***",
         "database": "nodejs",
-        "host": "192.168.6.61",
+        "host": "***",
         "dialect": "mysql",
         "operatorsAliases": 0
     },
