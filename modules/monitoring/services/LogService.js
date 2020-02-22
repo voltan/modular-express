@@ -11,11 +11,6 @@
  */
 exports.save = async function (params) {
     try {
-
-        /* console.log('========================')
-        console.log(params)
-        console.log('========================') */
-
         // Insert to db
         let result = await db.monitoringLog.create(params)
 

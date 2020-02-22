@@ -25,10 +25,6 @@ exports.index = async function (req, res, next) {
     // Call service
     const result = await logService.save(params)
 
-    /* console.log('========================')
-    console.log(result)
-    console.log('========================') */
-
     // Return result
     res.json(result)
 }
