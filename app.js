@@ -17,11 +17,11 @@ const systemConfig = require('./config/config.json')
 // Set service
 const moduleService = require('./services/ModuleService')
 
-// Set database
-global.db = require('./models/index')
-
 // Set route
 const indexRouter = require('./routes/IndexRouter')
+
+// Set database
+global.db = require('./models/index')
 
 // Set express
 const app = express()
