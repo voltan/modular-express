@@ -41,6 +41,38 @@ const params = {
                 request_params: Joi.required(),
                 request_result: Joi.required(),
             })
+        },
+        visit: {
+            index: Joi.object({
+                section: Joi.string()
+                    .pattern(new RegExp('^[a-zA-Z0-9]{2,32}$'))
+                    .required(),
+                modules: Joi.string()
+                    .pattern(new RegExp('^[a-zA-Z0-9]{2,32}$'))
+                    .required(),
+                entity: Joi.string()
+                    .pattern(new RegExp('^[a-zA-Z0-9]{2,32}$'))
+                    .required(),
+                entity_id: Joi.number()
+                    .integer()
+                    .min(1)
+                    .max(1000000)
+                    .required(),
+                action: Joi.string()
+                    .pattern(new RegExp('^[a-zA-Z0-9]{2,32}$'))
+                    .required(),
+                user_id: Joi.number()
+                    .integer()
+                    .min(1)
+                    .max(1000000)
+                    .required(),
+                user_token: Joi.string()
+                    .pattern(new RegExp('^[a-zA-Z0-9]{15,32}$'))
+                    .required(),
+                source: Joi.string()
+                    .pattern(new RegExp('^[a-zA-Z0-9]{2,32}$'))
+                    .required(),
+            })
         }
     },
 }
