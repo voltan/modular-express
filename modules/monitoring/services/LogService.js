@@ -15,10 +15,24 @@ exports.save = async function (params) {
         let result = await db.monitoringLog.create(params)
 
         // Check result
-        if ( typeof result.dataValues.id !== 'undefined' && result.dataValues.id > 0 ) {
-            return { result: true, data: result.dataValues, error: { code: 0, message: '' } }
+        if (typeof result.dataValues.id !== 'undefined' && result.dataValues.id > 0) {
+            return {
+                result: true,
+                data: result.dataValues,
+                error: {
+                    code: 0,
+                    message: ''
+                }
+            }
         } else {
-            return { result: false, data: {}, error: { code: 1, message: 'error to save data !' } }
+            return {
+                result: false,
+                data: {},
+                error: {
+                    code: 1,
+                    message: 'error to save data !'
+                }
+            }
         }
     } catch (e) {
         // Log Errors

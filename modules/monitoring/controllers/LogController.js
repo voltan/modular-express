@@ -30,5 +30,12 @@ exports.index = async function (req, res, next) {
 }
 
 exports.else = async function (req, res, next) {
-    res.json({ result: false, data: {}, error: { code: 1, message: 'No action set for use system module !' } })
+    res.json({
+        result: false,
+        data: {},
+        error: {
+            code: 1,
+            message: 'No action set for use system module !'
+        }
+    })
 }

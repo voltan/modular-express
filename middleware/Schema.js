@@ -24,15 +24,15 @@ const paramsList = require('../config/Params')
  * @returns {*|Promise<any>}
  */
 module.exports = (modules, controller, action, method, req, res, next) => {
-    let validate;
+    let validate
     switch (method) {
         case 'get':
             validate = paramsList[modules][controller][action].validate(req.params)
-            break;
+            break
 
         case 'post':
             validate = paramsList[modules][controller][action].validate(req.body)
-            break;
+            break
     }
 
     if (validate.error) {
