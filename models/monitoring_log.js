@@ -1,4 +1,3 @@
-'use strict'
 module.exports = function(sequelize, DataTypes) {
     return sequelize.define('monitoringLog', {
         id: {
@@ -23,8 +22,18 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING(255),
             allowNull: true,
             field: "action"
+        },
+        requestParams: {
+            type: DataTypes.TEXT,
+            allowNull: true,
+            field: "request_params"
+        },
+        requestResult: {
+            type: DataTypes.TEXT,
+            allowNull: true,
+            field: "request_result"
         }
     }, {
         tableName: 'monitoring_log'
-    })/*.sync({ alter: true })*/;
+    })
 };

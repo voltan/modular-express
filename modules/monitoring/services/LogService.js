@@ -11,21 +11,22 @@
  */
 exports.save = async function (params) {
     try {
-        console.log('========================')
+
+        /* console.log('========================')
         console.log(params)
-        console.log('========================')
+        console.log('========================') */
 
-        db.monitoringLog.create(params).then(function (log) {
-            // you can now access the newly created user
-            console.log('success', log.toJSON())
-        }).catch(function (err) {
-            // print the error details
-            console.log(err, params)
-        })
+        // Inset to db
+        let result = await db.monitoringLog.create(params)
 
-        return { result: true, data: params, error: { code: 0, message: '' } }
+        // Check result
+        if ( typeof result.dataValues.id !== 'undefined' && result.dataValues.id > 0 ) {
+            return { result: true, data: result.dataValues, error: { code: 0, message: '' } }
+        } else {
+            return { result: false, data: {}, error: { code: 1, message: 'error to save data !' } }
+        }
     } catch (e) {
         // Log Errors
-        throw Error('Error while Paginating Users')
+        throw Error('Error while Insert log')
     }
 }

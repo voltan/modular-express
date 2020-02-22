@@ -17,11 +17,17 @@ exports.index = async function (req, res, next) {
     const params = {
         userId: req.body.user_id,
         userToken: req.body.user_token,
-        action: req.body.action
+        action: req.body.action,
+        requestParams: JSON.stringify(req.body.request_params),
+        requestResult: JSON.stringify(req.body.request_result)
     }
 
     // Call service
     const result = await logService.save(params)
+
+    /* console.log('========================')
+    console.log(result)
+    console.log('========================') */
 
     // Return result
     res.json(result)

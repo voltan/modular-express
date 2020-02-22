@@ -38,6 +38,8 @@ const params = {
                 action: Joi.string()
                     .pattern(new RegExp('^[a-zA-Z0-9]{2,32}$'))
                     .required(),
+                request_params: Joi.required(),
+                request_result: Joi.required(),
             })
         }
     },

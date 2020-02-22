@@ -1,11 +1,11 @@
 {
     "database": {
         "username": "root",
-        "password": "",
+        "password": "Cabin@110",
         "database": "nodejs",
-        "host": "127.0.0.1",
+        "host": "192.168.6.61",
         "dialect": "mysql",
-        "operatorsAliases": false
+        "operatorsAliases": 0
     },
     "module": {
         "load": true
