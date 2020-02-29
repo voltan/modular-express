@@ -16,6 +16,7 @@ const systemConfig = require('./config/config.json')
 
 // Set service
 const moduleService = require('./services/ModuleService')
+const moduleCron = require('./services/CronService')
 
 // Set route
 const indexRouter = require('./routes/IndexRouter')
@@ -35,7 +36,8 @@ app.use(cookieParser())
 // Load route
 app.use('/', indexRouter)
 
-// Load all modules by service
+// Load services
 moduleService.load(app, systemConfig)
+moduleCron.load(app, systemConfig)
 
 module.exports = app

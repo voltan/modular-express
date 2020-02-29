@@ -16,8 +16,6 @@ exports.save = async function (params) {
             console.log(err)
         });
 
-
-
         // Check result
         if (typeof result.dataValues.id !== 'undefined' && result.dataValues.id > 0) {
             return {

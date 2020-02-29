@@ -8,6 +8,7 @@
         "operatorsAliases": 0
     },
     "module": {
-        "load": true
+        "load": true,
+        "cron": true
     }
 }

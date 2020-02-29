@@ -36,21 +36,25 @@ fs.readdirSync(__dirname).filter(file => {
 })
 
 // Set modules models
-fs.readdir('./modules', { withFileTypes: true }, (err, entries) => {
-    entries.forEach(entry => {
-        if (entry.isDirectory()) {
-            let modelPath = path.join(__dirname, '../') + '/modules/' + entry.name + '/models'
-            if (fs.existsSync(modelPath)) {
-                fs.readdirSync(modelPath).filter(file => {
-                    return (file.indexOf('.') !== 0) && (file !== 'relations.js') && (file !== 'index.js') && (file !== basename) && (file.slice(-3) === '.js')
-                }).forEach(file => {
-                    const model = sequelize.import(path.join(modelPath, file))
-                    db[model.name] = model
-                })
+if (systemConfig.module.load) {
+    fs.readdir('./modules', { withFileTypes: true }, (err, entries) => {
+        entries.forEach(entry => {
+            if (entry.isDirectory()) {
+                let modelPath = path.join(__dirname, '../') + '/modules/' + entry.name + '/models'
+                if (fs.existsSync(modelPath)) {
+                    fs.readdirSync(modelPath).filter(file => {
+                        return (file.indexOf('.') !== 0) && (file !== 'relations.js') && (file !== 'index.js') && (file !== basename) && (file.slice(-3) === '.js')
+                    }).forEach(file => {
+                        const model = sequelize.import(path.join(modelPath, file))
+                        db[model.name] = model
+                    })
+                }
             }
-        }
+        })
     })
-})
+} else {
+    console.log('Modules are disable and just system models available !')
+}
 
 Object.keys(db).forEach(function (modelName) {
     if (db[modelName].associate) {
